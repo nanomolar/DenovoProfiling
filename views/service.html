@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="de novo, chemical library, profiling" />
+    <meta name="revised" content="当前版本：v1.0" />
+
+    <title>DenovoProfiling service</title>
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <!--  bootstrap  -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--  文件上传组件  -->
+    <link href="https://cdn.bootcss.com/bootstrap-fileinput/4.3.3/css/fileinput.min.css" rel="stylesheet">
+    <!--  bootstrap复选框组件  -->
+    <link href="static/flat/orange.css" rel="stylesheet">
+    <!-- 动画组件
+    <link href="static/css/animate.css" rel="stylesheet"> -->
+    <!--  导航组件  -->
+    <link href="static/css/bootsnav.css" rel="stylesheet">
+    <!--  全局样式设置  -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/color.css" rel="stylesheet">
+    <link href="static/css/overwrite.css" rel="stylesheet">
+    <!--  字体设置  -->
+    <link href="static/fonts/FontAwesome/font-awesome.css" rel="stylesheet">
+    <!--  选项卡组件  -->
+    <link href="static/css/tab.css" rel="stylesheet">
+    <!--  自定义样式  -->
+    <link href="static/css/service.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="home service">
+    <noscript class="noscript bg-warning text-danger">Javascript is required for this site !</noscript>
+    <div id="myAlert" class="alert alert-warning fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warning！</strong>Your browser version is too low, please download IE9 and above or other browsers.
+    </div>
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-default navbar-mobile bootsnav">
+        <!-- Start Top Search -->
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon jsJobsubmit"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control jsJobID" placeholder="Input jobid here">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+
+        <div class="container">
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index"><img src="static/images/brand/logo.png" class="logo" alt=""></a>
+            </div>
+            <!-- End Header Navigation -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li><a href="index">Home</a></li>
+                    <li><a href="#" class="nav-a-active">Service</a></li>
+                    <li><a href="result.html">Result</a></li>
+                    <li><a href="help">Help</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- End Navigation -->
+
+    <div class="clearfix"></div>
+
+    <!--  loading  -->
+
+    <!-- Start service content -->
+    <div class="container service-content">
+        <!-- Start input data -->
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Input data</span>&nbsp;</div>
+            <div class="tab-group">
+                <input id="tab1" type="radio" name="tabs" >
+                <label for="tab1">Upload</label>
+                <input id="tab2" type="radio" name="tabs" checked>
+                <label for="tab2">Paste</label>
+
+                <section id="content1">
+                    <form enctype="multipart/form-data" style="overflow: hidden;" class="fileType">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-8" style="padding-left: 0;">
+                            <input id="molsFile" type="file" multiple class="file" data-overwrite-initial="false">
+                        </div>
+                        <div class="panel panel-info file-type col-xs-6 col-md-4">
+                            <div class="panel-heading"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Choose file type: </span>&nbsp;</div>
+                            <ul class="list-unstyled" style="padding-left: 15px;padding-top: 10px;">
+								<li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck1" id="Smiles_t">
+                                        <label for="t_Smiles">Smiles Format</label>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck1" id="SDF_t">
+                                        <label for="t_SDF">SDF Format</label>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck1" id="InChI_t">
+                                        <label for="t_InChI">InChI Format</label>
+                                    </p>
+                                </li>
+                                
+                                <li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck1" id="CDX_t">
+                                        <label for="t_CDX">CDX Format</label>
+                                    </p>
+                                </li>
+                            </ul>
+							
+                        </div>
+                    </form>
+                </section>
+                <section id="content2">
+                    <form class="paste-textarea" style="overflow: hidden;">
+                        <div class="col-xs-12 col-sm-6 col-md-8" style="padding-left: 0">
+                            <textarea placeholder=" Please paste a list of Smiles, InChI with one molecule per row, or paste a SDF text" id="textMol"></textarea>
+                        </div>
+                        <div class="panel panel-info file-type col-xs-6 col-md-4">
+                            <div class="panel-heading"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Choose file type: </span>&nbsp;</div>
+                            <ul class="list-unstyled" style="padding-left: 15px;padding-top: 10px;">
+                                <li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck" id="Smiles_t" value="Smiles_t" >
+                                        <label for="t_Smiles">Smiles Format</label>
+                                    </p>
+                                </li>
+								<li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck" id="SDF_t" value="SDF_t" >
+                                        <label for="t_SDF">SDF Format</label>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck" id="InChI_t" value="InChI_t" >
+                                        <label for="t_InChI">InChI Format</label>
+                                    </p>
+                                </li>
+                                
+                            </ul>
+                        </div>
+						
+						<div class="btn-group search" style="margin:0px 0 10px 10px;text-align:center;">
+                			<a href="javascript:void(0)" class="btn btn-block btn-primary demo1">Demo 1</a>
+						</div>
+						<div class="btn-group search" style="margin:0px 0 10px 10px;text-align:center;">
+                			<a href="javascript:void(0)" class="btn btn-block btn-primary demo2">Demo 2</a>
+						</div>
+						
+                    </form>
+					
+					
+					
+                </section>
+            </div>
+        </div>
+        <!-- End input data -->
+
+        <!-- Start analysis options -->
+        <div class="panel panel-info tools-option">
+            <div class="panel-heading"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Choose analysis methods</span>&nbsp;</div>
+            <section class="analysis-tool">
+                <!-- <p class="text-h3">Choose Filtering options: </p> -->
+                <ul class="list-unstyled" style="margin-bottom: 0;">
+                    <li>
+                        <p class="text-black">
+                            <label>
+                                <input type="checkbox" checked name="structure" disabled>
+                                Identification & Visualization
+                            </label>
+                            <a href="help#molStruc" class="text-tips text-primary">
+                                <i class="fa fa-question-circle"></i>
+                                <i class="hiddenTip">Click here to find more informations about Identification & Visualization</i>
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="text-black">
+                            <label>
+                                <input type="checkbox" name="diversity">
+                                Chemical Space
+                            </label>
+                            <a href="help#molDiver" class="text-tips text-primary">
+                                <i class="fa fa-question-circle"></i>
+                                <i class="hiddenTip">Click here to find more informations about Chemical Space exploration</i>
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="text-black">
+                            <label>
+                                <input type="checkbox" name="scaffold">
+                                Scaffold Analysis
+                            </label>
+                            <a href="help#molScaf" class="text-tips text-primary">
+                                <i class="fa fa-question-circle"></i>
+                                <i class="hiddenTip">Click here to find more informations about Scaffold Analysis</i>
+                            </a>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="text-black">
+                            <label>
+                                <input type="checkbox" name="alignment">
+                                Molecular Alignment
+                            </label>
+                            <a href="help#molAlign" class="text-tips text-primary">
+                                <i class="fa fa-question-circle"></i>
+                                <i class="hiddenTip">Click here to find more informations about Molecular Alignment</i>
+                            </a>
+                        </p>
+                    </li>
+                    
+                    <li>
+                        <p class="text-black">
+                            <label>
+                                <input type="checkbox" name="drugs">
+                                Drugs Mapping
+                            </label>
+                            <a href="help#molDrug" class="text-tips text-primary">
+                                <i class="fa fa-question-circle"></i>
+                                <i class="hiddenTip">Click here to find more informations about Drugs Mapping</i>
+                            </a>
+                        </p>
+                    </li>
+					<li>
+                        <p class="text-black">
+                            <label>
+                                <input type="checkbox" name="target">
+                                Target & Pathway
+                            </label>
+                            <a href="help#molTarg" class="text-tips text-primary">
+                                <i class="fa fa-question-circle"></i>
+                                <i class="hiddenTip">Click here to find more informations about molecular target profiling</i>
+                            </a>
+                        </p>
+						<p class="text-info bg-info">
+                            <strong><i class="fa fa-bug"></i>&nbsp;Note: </strong> <a href="help">Click here to find more informations about analysis methods</a>
+                        </p>
+                        <p class="loading text-danger bg-danger">
+                            <strong><i class="fa fa-spinner fa-spin"></i>&nbsp;Job is submiting. This may take some time, please wait...</strong>
+                        </p>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="btn-run">
+                <button class="btn btn-primary jsSubmit">Submit</button>
+       
+            </div>
+        </div>
+        <!-- End analysis options -->
+    </div>
+    <!-- End Home -->
+    <div class="clearfix"></div>
+
+    <footer>
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="service">Service</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="result.html">Result</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="help">Help</a></li>
+        </ul>
+        <p style="text-align: center;padding: 0;margin: 0 auto;width: 350px;">
+            <span style="line-height:40px;float:left;color:darkgray">Copyright © 2020-2021 GIM  All rights reserved</span>
+            <a class="visitor-record" style="width: 40px; display:inline-block">  
+            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/5.js?i=5cyqgqeeo3e&amp;m=2&amp;c=ff0000&amp;cr1=ffffff" async="async"></script>
+        </a>
+        </p>
+    </footer>
+
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-fileinput/4.3.3/js/fileinput.min.js"></script>
+
+    <script src="static/js/library/icheck.min.js"></script>
+    <script src="static/js/library/bootsnav.js"></script>
+    <script src="static/js/common.js"></script>
+    <script src="static/js/service.js"></script>
+</body>
+
+</html>

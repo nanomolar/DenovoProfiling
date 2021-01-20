@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="de novo, chemical library, profiling" />
+    <meta name="revised" content="当前版本：v1.0" />
+
+	<title>DenovoProfiling home</title>
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+	<!--  bootstrap  -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<!-- <link href="static/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!--  导航组件  -->
+	<link href="static/css/bootsnav.css" rel="stylesheet">
+    <!--  全局样式设置  -->
+	<link href="static/css/style.css" rel="stylesheet">
+	<link href="static/css/color.css" rel="stylesheet">
+    <link href="static/css/overwrite.css" rel="stylesheet">
+    <link href="static/css/index.css" rel="stylesheet">
+    <!--  字体设置  -->
+	<link href="static/fonts/FontAwesome/font-awesome.css" rel="stylesheet">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="home">
+    <noscript class="noscript bg-warning text-danger">Javascript is required for this site !</noscript>
+    <div id="myAlert" class="alert alert-warning fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warning！</strong>Your browser version is too low, please download IE9 and above or other browsers.
+    </div>
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-default navbar-mobile bootsnav">
+        <!-- Start Top Search -->
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon jsJobsubmit"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control jsJobID" placeholder="Input jobid here">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+
+        <div class="container">
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>                
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>                   
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index"><img src="static/images/brand/logo.png" class="logo" alt="ChemProfiling"></a>
+            </div>
+            <!-- End Header Navigation -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li><a href="index" class="nav-a-active">Home</a></li>
+                    <li><a href="service" >Service</a></li>
+                    <li><a href="result.html" >Result</a></li>
+                    <li><a href="help" >Help</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- End Navigation -->
+
+    <div class="clearfix"></div>
+
+    <!-- Start Home -->
+    <div class="container">
+        <div class="jumbotron">        
+            <!-- <h1>ChemProfiling</h1> -->
+            <h2>DenovoProfiling: <br>
+            Fast visualizing and profiling your de novo generated library.
+            </h2>
+            
+            <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Analysis</a></p> -->    
+        </div>
+        <div class="feature">
+            <h4 class="">Introduction</h4>
+            <ul class="nav row">
+                <li style="text-align:justify" role="presentation" class="col-xs-12 col-sm-7 col-md-16"><p>The main objective of drug discovery is to find a molecule with desired biological properties. De novo drug design is one of the most promising and scalable approach with the advances of deep learning techniques. Recently, a number of architectures for molecular generation, such as recurrent neural networks (RNN), variational autoencoders (VAE), and generative adversarial networks (GANs) have been developed and proven successful in generating target-focus molecule library. Successful cases demonstrate that the deep learning based de novo molecular design could accelerate the drug discovery process. The flourish of the de novo molecular generation methods and applications created great demand for the visualization and functional profiling for the generated molecules.</p>
+				</li>
+				<li style="text-align:justify" role="presentation" class="col-xs-12 col-sm-7 col-md-16"><p>DenovoProfiling, a webserver dedicated for de novo generated molecule library profiling. We aim to provide a user-friendly public webserver to support the structure and chemical space visualization, scaffold analysis, molecular alignment, drugs profiling, targets and pathway profiling. We integrated cheminformatics tools and databases to provide comprehensive annotations for the de novo generated molecules. We believe that DenovoProfiling could be an efficient tool for user to capture the knowledge of de novo generated molecules quickly.</p>
+				</li>
+           	<li ><img style="margin: 0 auto; width:450px;" src="static/img/toc.png" alt="ChemProfiling"></li>
+			</ul>
+        </div>
+		<div class="feature">
+            <h4 class="">Modules</h4>
+            <ul class="nav row">
+                <li role="presentation" class="col-xs-12 col-sm-6 col-md-4"><a href="help#molStruc">Identification & <br>Visualization <br><span>Structure identification and 2D structure visualization</span></a></li>
+                <li role="presentation" class="col-xs-12 col-sm-6 col-md-4"><a href="help#molDiver">Chemical<br> Space<br><span>Interactive chemical space exploration </span></a></li>
+                <li role="presentation" class="col-xs-12 col-sm-6 col-md-4"><a href="help#molScaf">Scaffold <br>Analysis<br><span>Bemis-Murcko scaffold decomposition and statistics</span></a></li>
+                <li role="presentation" class="col-xs-12 col-sm-6 col-md-4"><a href="help#molAlign">Molecular <br>Alignment<br><span>Molecular shape alignment and comparison</span></a></li>
+                <li role="presentation" class="col-xs-12 col-sm-6 col-md-4"><a href="help#molDrug">Drugs <br>Mapping<br><span>Structure similar drugs mapping</span></a></li>
+				<li role="presentation" class="col-xs-12 col-sm-6 col-md-4"><a href="help#molTarg">Target & <br>Pathway<br><span>Targeted proteins and enriched pathways</span></a></li>
+            </ul>
+        </div>
+        <div class="feature">
+            <h4>Acknowledgments</h4>
+            <ul class="list-inline" style="width:100%">
+                <li role=""><img src="static/img/acknowledgment/chembl.jpg"></li>
+				<li role=""><img src="static/img/acknowledgment/pubchem.png"></li>
+                <li role="" style="padding: 10px 0"><img src="static/img/acknowledgment/drugbank.png" style="height: 30px;"></li>
+				<li role=""><img src="static/img/acknowledgment/rdkit.png"></li>
+                <li role=""><img src="static/img/acknowledgment/cwcMainTitle.png"></li>
+                <li role=""><img src="static/img/acknowledgment/golang.jpg"></li>
+                <li role=""><img src="static/img/acknowledgment/mysql.jpg"></li>
+                <li role=""><img src="static/img/acknowledgment/openbabel.jpg"></li>
+                <li role=""><img src="static/img/acknowledgment/Rlogo.png"></li>
+				
+            </ul>
+        </div>  
+    </div>
+
+    <footer>
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation" ><a href="/">Home</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation" ><a href="service">Service</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation" ><a href="result.html">Result</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation" ><a href="help">Help</a></li>
+        </ul>
+        <p style="text-align: center;padding: 0;margin: 0 auto;width: 350px;">
+            <span style="line-height:40px;float:left;color:darkgray">Copyright © 2020-2021 GIM  All rights reserved</span>
+            <a class="visitor-record" style="width: 40px; display:inline-block">  
+            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/5.js?i=5cyqgqeeo3e&amp;m=2&amp;c=ff0000&amp;cr1=ffffff" async="async"></script>
+        </a>
+        </p>
+    </footer>
+    <!-- End Home -->
+    <div class="clearfix"></div>
+    
+	<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+	<script src="static/js/library/bootsnav.js"></script>
+    <script src="static/js/common.js"></script>
+</body>
+</html>
