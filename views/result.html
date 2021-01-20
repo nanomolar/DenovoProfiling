@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="de novo, chemical library, profiling" />
+    <meta name="revised" content="当前版本：v1.0" />
+
+    <title>DenovoProfiling result</title>
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <!--  bootstrap  -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--  bootstrap table -->
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+    <!--  vis -->
+    <link href="https://cdn.bootcss.com/vis/4.16.0/vis.min.css" rel="stylesheet">
+
+    <!--  bootstrap复选框样式  -->
+    <link href="static/flat/orange.css" rel="stylesheet">
+    <!--  导航样式  -->
+    <link href="static/css/bootsnav.css" rel="stylesheet">
+    <!--  全局样式  -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/color.css" rel="stylesheet">
+    <link href="static/css/overwrite.css" rel="stylesheet">
+    <!--  翻页组件  -->
+    <link href="static/css/loading.css" rel="stylesheet">
+    <!--  字体样式  -->
+    <link href="static/fonts/FontAwesome/font-awesome.css" rel="stylesheet">
+    <!--  翻页样式  -->
+    <link href="static/css/jqpagination.css" rel="stylesheet">
+    <!--  选项卡样式  -->
+    <link href="static/css/tab.css" rel="stylesheet">
+    <!--  自定义样式  -->
+    <link href="static/css/result.css" rel="stylesheet">
+    <!-- for chemdoodle -->
+    <script src="static/js/library/ChemDoodleWeb-libs.js"></script>
+    <script src="static/js/library/ChemDoodleWeb-unpacked.js"></script>
+
+    <style type="text/css">
+        #content2 a,
+        #content5 a {
+            text-decoration: none;
+            color: #337ab7;
+        }
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+        <script src="static/js/library/excanvas.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="result">
+    <noscript class="noscript bg-warning text-danger">Javascript is required for this site !</noscript>
+    <div id="myAlert" class="alert alert-warning fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warning！</strong>Your browser version is too low, please download IE9 and above or other browsers.
+    </div>
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-default navbar-mobile bootsnav">
+        <!-- Start Top Search -->
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon jsJobsubmit"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control jsJobID" placeholder="Input jobid here">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+
+        <div class="container">
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index"><img src="static/images/brand/logo.png" class="logo" alt=""></a>
+            </div>
+            <!-- End Header Navigation -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li><a href="index">Home</a></li>
+                    <li><a href="service">Service</a></li>
+                    <li><a href="#" class="nav-a-active">Result</a></li>
+                    <li><a href="help">Help</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- End Navigation -->
+
+    <div class="clearfix"></div>
+
+    <div class="container-out">
+        <!-- Start main content -->
+        <div class="container result-content ">
+            <!--  Start loading  -->
+            <div class="inner">
+                <div class="load-container load5">
+                    <div class="loader"></div>
+                </div>
+
+                <div class="pull-right loadLetter">Loading...</div>
+                <div class="clearfix"></div>
+            </div>
+            <!--  End loading  -->
+
+            <!-- Start result content -->
+            <div class="tab-group">
+                <!-- 选项卡标题区 -->
+                <input id="tab1" type="radio" name="tabs" checked class="dataLoaded" data-name="structure">
+                <label for="tab1" data-name="structure">Identification & Visualization</label>
+
+                <input id="tab2" type="radio" name="tabs" data-name="diversity">
+                <label for="tab2" data-name="diversity">Chemical Space</label>
+
+                <input id="tab3" type="radio" name="tabs" data-name="scaffold">
+                <label for="tab3" data-name="scaffold">Scaffold Analysis</label>
+
+                <input id="tab4" type="radio" name="tabs" data-name="alignment">
+                <label for="tab4" data-name="alignment">Molecular Alignment</label>
+
+                <input id="tab6" type="radio" name="tabs" data-name="drugs">
+                <label for="tab6" data-name="drugs">Drugs Mapping</label>
+				
+				<input id="tab5" type="radio" name="tabs" data-name="target">
+                <label for="tab5" data-name="target">Target & Pathway</label>
+
+                <!-- 选项卡内容区 -->
+                <section id="content1" class="structure-display" data-name="structure">
+                    <!-- 结构预览顶部选项 -->
+                    <ul class="nav structure-option">
+                        <!-- <li class="pull-left">
+                        <button class="btn btn-primary" type="button" id="marvinDisplay" >Search Window</button>
+                    </li> -->
+
+                        <li class="pull-right btn-reset">
+                            <button class="btn btn-default pull-right view-list"><i class="fa fa-list "></i></button>
+                        </li>
+                        <li class="pull-right btn-reset btn-margin">
+                            <button class="btn btn-default view-grid"><i class="fa fa-th-large "></i></button>
+                        </li>
+                        <li class="pull-right btn-reset btn-margin">
+                            <button class="btn btn-default js-dloadAllMol"><i class="fa fa-download"></i></button>
+                        </li>
+                    </ul>
+
+                    <!-- 分子结构显示 -->
+                    <ol class='grid' id='strucFrame'>
+                        <li class="thead-row">
+                            <div class="thead-cell thead-mols">Mol</div>
+                            <div class="thead-cell thead-RadarChart">RadarChart</div>
+                            <p class="thead-cell tcell-ID tcell-info">ID</p>
+                            <p class="thead-cell tcell-Name tcell-info">Name</p>
+							<p class="thead-cell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="thead-cell tcell-MW tcell-info">MW</p>
+                            <p class="thead-cell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="thead-cell tcell-HBD tcell-info">HBD</p>
+                            <p class="thead-cell tcell-HBA tcell-info">HBA</p>
+                            <p class="thead-cell tcell-RB tcell-info">RB</p>
+                            <p class="thead-cell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-0">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher0 = new ChemDoodle.TransformCanvas('sketcher0', 200, 200, true);
+                                </script>
+                                <!--
+								<p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+								-->
+								
+								<p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart0" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-1">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher1 = new ChemDoodle.TransformCanvas('sketcher1', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart1" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-2">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher2 = new ChemDoodle.TransformCanvas('sketcher2', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart2" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-3">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher3 = new ChemDoodle.TransformCanvas('sketcher3', 200, 200, true);
+                                </script>
+                               <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+								
+								
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart3" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+							
+                        </li>
+                        <li class="frame" id="structure-4">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher4 = new ChemDoodle.TransformCanvas('sketcher4', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart4" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-5">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher5 = new ChemDoodle.TransformCanvas('sketcher5', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart5" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-6">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher6 = new ChemDoodle.TransformCanvas('sketcher6', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart6" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-7">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher7 = new ChemDoodle.TransformCanvas('sketcher7', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart7" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-8">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher8 = new ChemDoodle.TransformCanvas('sketcher8', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart8" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-9">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher9 = new ChemDoodle.TransformCanvas('sketcher9', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart9" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-10">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher10 = new ChemDoodle.TransformCanvas('sketcher10', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart10" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-11">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher11 = new ChemDoodle.TransformCanvas('sketcher11', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart11" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-12">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher12 = new ChemDoodle.TransformCanvas('sketcher12', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart12" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-13">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher13 = new ChemDoodle.TransformCanvas('sketcher13', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart13" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                        <li class="frame" id="structure-14">
+                            <div class="image tcell">
+                                <script>
+                                    var sketcher14 = new ChemDoodle.TransformCanvas('sketcher14', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                </p>
+								<p class="grid-molBtn">
+                                    <span class="score pull-right"></span>
+                                </p>
+								
+                                <p class="viewMoreInfo js-str-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="pull-right js-dloadSingleMol"></span>
+                                </p>
+                            </div>
+                            <div class="radarDraw tcell">
+                                <canvas id="radarChart14" width="240px" height="218px"></canvas>
+                            </div>
+                            <p class="tcell tcell-ID tcell-info">ID</p>
+                            <p class="tcell tcell-Name tcell-info">Name</p>
+							<p class="tcell tcell-CID tcell-info">PubChem CID</p>
+                            <p class="tcell tcell-MW tcell-info">MW</p>
+                            <p class="tcell tcell-ALogP tcell-info">ALogP</p>
+                            <p class="tcell tcell-HBD tcell-info">HBD</p>
+                            <p class="tcell tcell-HBA tcell-info">HBA</p>
+                            <p class="tcell tcell-RB tcell-info">RB</p>
+                            <p class="tcell tcell-TPSA tcell-info">TPSA</p>
+                        </li>
+                    </ol>
+
+                    <!-- 翻页 -->
+                    <div class="JQ_pagination pull-right str_pagination">
+                        <a href="#" class="first" data-action="first">&laquo;</a>
+                        <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+                        <input type="text" readonly="readonly" data-max-page="40" />
+                        <a href="#" class="next" data-action="next">&rsaquo;</a>
+                        <a href="#" class="last" data-action="last">&raquo;</a>
+                    </div>
+                </section>
+
+                <section id="content2" class="diversity-chart" data-name="diversity">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <!-- 热图matrix -->
+                        <div class="panel panel-info">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <a class="pull-left"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Similarities heatmap</span></a>
+                                <a class="pull-right fa fa-navicon" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size:24px">
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div id="heatMap" class="dj_col col-md-7 col-xs-12">
+                                            <div class="text-center legendIcon">
+                                                <span class="label label-success" style="color: #fff;">Dissimilar</span>
+                                                <span class="label label-danger" style="color: #fff;">Similar</span>
+                                                <span class="label label-warning saveImg" style="color: #fff;" name="heatMap"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;&nbsp;Save</span>
+                                            </div>
+                                        </div>
+                                        <div id="heatMap-mol" class="dj_col col-md-5 col-xs-10">
+                                            <div class="hoveredRect">
+                                                <p class="meter">
+                                                    <span class="label label-warning" style="color: #fff;">Hoverd Mol</span>
+                                                    <span class="label label-col-hover">Col: </span>
+                                                    <span class="label label-row-hover">Row: </span>
+                                                    <span class="label label-sim-hover">Similarity: </span>
+                                                </p>
+                                                <div class="hoverdMol">
+                                                    <div class="col-xs-6">
+                                                        <script type="text/javascript">
+                                                            var sketcher71 = new ChemDoodle.TransformCanvas('sketcher71', 200, 200, true);
+                                                        </script>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <script type="text/javascript">
+                                                            var sketcher72 = new ChemDoodle.TransformCanvas('sketcher72', 200, 200, true);
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="selectedRect">
+                                                <p class="meter">
+                                                    <span class="label label-warning" style="color: #fff;">Selected Mol</span>
+                                                    <span class="label label-col-select">Col: </span>
+                                                    <span class="label label-row-select">Row: </span>
+                                                    <span class="label label-sim-select">Similarity: </span>
+                                                </p>
+                                                <div class="selectedMol">
+                                                    <div class="col-xs-6">
+                                                        <script type="text/javascript">
+                                                            var sketcher73 = new ChemDoodle.TransformCanvas('sketcher73', 200, 200, true);
+                                                        </script>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <script type="text/javascript">
+                                                            var sketcher74 = new ChemDoodle.TransformCanvas('sketcher74', 200, 200, true);
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <hr class="featurette-divider firstDivider"> -->
+                                    <div class="row" style="margin-top:10px">
+                                        <!-- <p class="meter dj_col" style="margin-top: 30px;padding-left:20px;">
+                                            <span class="label label-primary" style="color: #fff;">Legend</span>
+                                            <span class="label ">Horizontal axis: Similarity</span>
+                                            <span class="label ">Vertical axis: Distrbution</span>
+                                        </p> -->
+                                        <div id="cartogramAllData" class="dj_col col-xs-12" style="margin-top:30px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+                        <!-- 相似度统计图 -->
+                        <div class="panel panel-info">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <a class="pull-left"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>PCA</span></a>
+                                <a class="pull-right fa fa-navicon" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="font-size:24px">
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="row">
+                                    <div id="pcaPlot" class="dj_col col-md-7 col-xs-12"></div>
+                                    <div class="dj_col col-md-5 col-xs-10">
+                                        <p class="meter" style="margin-top: 20px;">
+                                            <span class="label label-primary" style="color: #fff;">Legend </span>
+                                            <span class="label "> Horizontal axis: PC1</span>
+                                        </p>
+                                        <p>
+                                            <span class="label label-primary" style="visibility: hidden;">Legend </span>
+                                            <span class="label "> Vertical axis: PC2</span>
+                                        </p>
+                                        <p class="meter">
+                                            <span class="label label-warning " style="color: #fff;">Hovered</span>
+                                            <span class="label label-molName" style="padding: 1em .5em 0;width:150px;">Mol name:  </span>
+                                            <!-- <span class="label label-pc1">PC1: </span>
+                                            <span class="label label-pc2">PC2: </span> -->
+                                        </p>
+                                        <div class="col-xs-6">
+                                            <script type="text/javascript">
+                                                var sketcher75 = new ChemDoodle.TransformCanvas('sketcher75', 200, 200, true);
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+                        <!-- 直方统计图 -->
+                        <div class="panel panel-info">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <a class="pull-left"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Distribution of drug-like properties</span></a>
+                                <a class="pull-right fa fa-navicon" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" style="font-size:24px">
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <div class="row cartogramRow">
+                                        <div class="col-md-6 hasMarginRight">
+                                            <h5 class="cartogram-title">
+                                                <span>Molecule Weight</span>
+                                                <a class="saveImg pull-right" name="MW"><i class="fa fa-download"></i></a>
+                                            </h5>
+                                            <div class="svg-bg" id="distribution-chart0"></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="cartogram-title">
+                                                <span>AlogP</span>
+                                                <a class="saveImg pull-right" name="Alogp"><i class="fa fa-download"></i></a>
+                                            </h5>
+                                            <div class="svg-bg" id="distribution-chart1"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row cartogramRow" style="padding: 30px 0;">
+                                        <div class="col-md-6 hasMarginRight">
+                                            <h5 class="cartogram-title">
+                                                <span>HBA</span>
+                                                <a class="saveImg pull-right" name="Hba"><i class="fa fa-download"></i></a>
+                                            </h5>
+                                            <div class="svg-bg" id="distribution-chart2"></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="cartogram-title">
+                                                <span>HBD</span>
+                                                <a class="saveImg pull-right" name="Hbd"><i class="fa fa-download"></i></a>
+                                            </h5>
+                                            <div class="svg-bg" id="distribution-chart3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row cartogramRow">
+                                        <div class="col-md-6 hasMarginRight">
+                                            <h5 class="cartogram-title">
+                                                <span>TPSA</span>
+                                                <a class="saveImg pull-right" name="Tpsa"><i class="fa fa-download"></i></a>
+                                            </h5>
+                                            <div class="svg-bg" id="distribution-chart4"></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="cartogram-title">
+                                                <span>RotBonds</span>
+                                                <a class="saveImg pull-right" name="Rb"><i class="fa fa-download"></i></a>
+                                            </h5>
+                                            <div class="svg-bg" id="distribution-chart5"></div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="content3" class="scaffold-display" data-name="scaffold" style="padding-top:15px;"> 
+                    <div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" role="tab" id="headingSeven">
+                                <a class="pull-left" style="color: #337ab7;"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Scaffold Statistcs</span></a>
+                                <a class="pull-right fa fa-navicon" role="button" data-toggle="collapse" data-parent="#accordion7" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven" style="font-size:24px;color: #337ab7;">
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="collapseSeven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSeven">
+                                 
+                                <div class="row">
+                                    <div id="scatterChart" class="dj_col col-md-7 col-xs-12"></div>
+                                    <div class="dj_col col-md-5 col-xs-10">
+                                        <div style="width: 70%;margin: 0 auto;padding-top: 15%;">
+                                            <p class="meter" style="margin-top:20px;">
+                                                <span class="label label-warning " style="color: #fff;">Hovered</span>
+                                                <span class="label label-cid1" style="padding: 1em .5em 0;width:150px;">Scaffold CID:  </span>
+                                            </p>
+                                            <div class="col-xs-6">
+                                                <script type="text/javascript">
+                                                    var sketcher76 = new ChemDoodle.TransformCanvas('sketcher76', 200, 200, true);
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr></hr>
+                                <div class="row">
+                                    <div id="barChart" class="dj_col col-md-7 col-xs-12"></div>
+                                    <div class="dj_col col-md-5 col-xs-10">
+                                        <div style="width: 70%;margin: 0 auto;padding-top: 15%;">
+                                            <p class="meter" style="margin-top:20px;">
+                                                <span class="label label-warning " style="color: #fff;">Hovered</span>
+                                                <span class="label label-cid2" style="padding: 1em .5em 0;width:150px;">Scaffold CID:  </span>
+                                            </p>
+                                            <div class="col-xs-6">
+                                                <script type="text/javascript">
+                                                    var sketcher77 = new ChemDoodle.TransformCanvas('sketcher77', 200, 200, true);
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 骨架列表 -->
+                    <ol class='grid' id='scafFrame'>
+                        <li class="frame" id="scaffold-0">
+                            <div class="image">
+                                <script>
+                                    var sketcher15 = new ChemDoodle.TransformCanvas('sketcher15', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-1">
+                            <div class="image">
+                                <script>
+                                    var sketcher16 = new ChemDoodle.TransformCanvas('sketcher16', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-2">
+                            <div class="image">
+                                <script>
+                                    var sketcher17 = new ChemDoodle.TransformCanvas('sketcher17', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-3">
+                            <div class="image">
+                                <script>
+                                    var sketcher18 = new ChemDoodle.TransformCanvas('sketcher18', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-4">
+                            <div class="image">
+                                <script>
+                                    var sketcher19 = new ChemDoodle.TransformCanvas('sketcher19', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-5">
+                            <div class="image">
+                                <script>
+                                    var sketcher20 = new ChemDoodle.TransformCanvas('sketcher20', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-6">
+                            <div class="image">
+                                <script>
+                                    var sketcher21 = new ChemDoodle.TransformCanvas('sketcher21', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-7">
+                            <div class="image">
+                                <script>
+                                    var sketcher22 = new ChemDoodle.TransformCanvas('sketcher22', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-8">
+                            <div class="image">
+                                <script>
+                                    var sketcher23 = new ChemDoodle.TransformCanvas('sketcher23', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-9">
+                            <div class="image">
+                                <script>
+                                    var sketcher24 = new ChemDoodle.TransformCanvas('sketcher24', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-10">
+                            <div class="image">
+                                <script>
+                                    var sketcher25 = new ChemDoodle.TransformCanvas('sketcher25', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-11">
+                            <div class="image">
+                                <script>
+                                    var sketcher26 = new ChemDoodle.TransformCanvas('sketcher26', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-12">
+                            <div class="image">
+                                <script>
+                                    var sketcher27 = new ChemDoodle.TransformCanvas('sketcher27', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-13">
+                            <div class="image">
+                                <script>
+                                    var sketcher28 = new ChemDoodle.TransformCanvas('sketcher28', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="frame" id="scaffold-14">
+                            <div class="image">
+                                <script>
+                                    var sketcher29 = new ChemDoodle.TransformCanvas('sketcher29', 200, 200, true);
+                                </script>
+                                <p class="viewMoreInfo js-scaf-molInfoPopup">
+                                    <a href="javascript:void(0)" class="pull-right"><i class="fa fa-plus"></i></a>
+                                </p>
+                                <p class="grid-molBtn">
+                                    <span class="scaf-cid"></span><span class="scaf-count pull-right"></span>
+                                </p>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <!-- 翻页 -->
+                    <div class="JQ_pagination pull-right scaf_pagination">
+                        <a href="#" class="first" data-action="first">&laquo;</a>
+                        <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+                        <input type="text" readonly="readonly" data-max-page="40" />
+                        <a href="#" class="next" data-action="next">&rsaquo;</a>
+                        <a href="#" class="last" data-action="last">&raquo;</a>
+                    </div>
+
+                    <div class="noResultTips">
+                        <p class="text-danger">No scaffolds find in this chemical library.</p>
+                    </div>
+                </section>
+
+                <section id="content4" class="alignment-display" data-name="alignment">
+                    <div class="TDMol">
+                        <div class="TDMol-content">
+                        </div>
+                        <ul class="nav TDMol-operator">
+                            <li class="pull-left">
+                                <button class="btn btn-primary" type="button" value="Stick">Stick</button>
+                            </li>
+                            <li class="pull-left">
+                                <button class="btn btn-primary" type="button" value="Line">Line</button>
+                            </li>
+                            <li class="pull-left">
+                                <button class="btn btn-primary" type="button" value="Recenter">Recenter</button>
+                            </li>
+                            <li class="pull-left btn-reset btn-margin">
+                                <button class="btn btn-default js-dloadAlignedMol"><i class="fa fa-download"></i></button>
+                            </li>
+                            <li class="btn-group js-viewSelectedMol">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-degree="10" style="margin-right: 5px;">Selected&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" style="min-width: 80px; top: 34px; left: 252px;">
+                                    <!-- <li class="dj_"><a style="position: relative;"><span>fhjkasdhjkfhajks</span>&nbsp;&nbsp;&nbsp;<button class="close" aria-hidden="true">&times;</button></a></li> -->
+                                </ul>
+                            </li>
+                            <!-- <li class="pull-left">
+                                    <button class="btn btn-default js-dloadAlignMol"><i class="fa fa-download"></i></button>
+                                </li> -->
+                        </ul>
+                    </div>
+                    <div class="mainMol">
+                        <ol class='grid' id='aligFrame'>
+                            <li class="frame" id="alignment-0">
+                                <div class="image">
+                                    <script>
+                                        var sketcher65 = new ChemDoodle.TransformCanvas('sketcher65', 200, 200, true);
+                                    </script>
+                                    <p class="grid-molBtn">
+                                        <input class="pull-left" type="checkbox" name="alignment">
+                                        <span class="pull-right"></span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="frame" id="alignment-1">
+                                <div class="image">
+                                    <script>
+                                        var sketcher66 = new ChemDoodle.TransformCanvas('sketcher66', 200, 200, true);
+                                    </script>
+                                    <p class="grid-molBtn">
+                                        <input class="pull-left" type="checkbox" name="alignment">
+                                        <span class="pull-right"></span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="frame" id="alignment-2">
+                                <div class="image">
+                                    <script>
+                                        var sketcher67 = new ChemDoodle.TransformCanvas('sketcher67', 200, 200, true);
+                                    </script>
+                                    <p class="grid-molBtn">
+                                        <input class="pull-left" type="checkbox" name="alignment">
+                                        <span class="pull-right"></span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="frame" id="alignment-3">
+                                <div class="image">
+                                    <script>
+                                        var sketcher68 = new ChemDoodle.TransformCanvas('sketcher68', 200, 200, true);
+                                    </script>
+                                    <p class="grid-molBtn">
+                                        <input class="pull-left" type="checkbox" name="alignment">
+                                        <span class="pull-right"></span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="frame" id="alignment-4">
+                                <div class="image">
+                                    <script>
+                                        var sketcher69 = new ChemDoodle.TransformCanvas('sketcher69', 200, 200, true);
+                                    </script>
+                                    <p class="grid-molBtn">
+                                        <input class="pull-left" type="checkbox" name="alignment">
+                                        <span class="pull-right"></span>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="frame" id="alignment-5">
+                                <div class="image">
+                                    <script>
+                                        var sketcher70 = new ChemDoodle.TransformCanvas('sketcher70', 200, 200, true);
+                                    </script>
+                                    <p class="grid-molBtn">
+                                        <input class="pull-left" type="checkbox" name="alignment">
+                                        <span class="pull-right"></span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ol>
+                        <!-- 翻页 -->
+                        <div class="JQ_pagination pull-right alig_pagination" style="margin: 0 0 6px;">
+                            <a href="#" class="first" data-action="first">&laquo;</a>
+                            <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+                            <input type="text" readonly="readonly" data-max-page="40" />
+                            <a href="#" class="next" data-action="next">&rsaquo;</a>
+                            <a href="#" class="last" data-action="last">&raquo;</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="content5" class="targetsProf-display" data-name="target">
+                    <div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <a class="pull-left"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Targets profiling</span></a>
+                                <a class="pull-right fa fa-navicon" role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour" style="font-size:24px">
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                                <div class="panel-body table-responsive">
+                                    <table data-sort-name="Molchembl_id" data-show-columns="true" data-show-export="true" data-show-toggle="true" data-pagination="true" data-page-list="[10,25,50,100,All]" data-page-size="10" data-striped="true" data-detail-formatter="detailFormatter" data-search="true"
+                                        class="table table-striped table-hover tatgetTable">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" role="tab" id="headingFive">
+                                <a class="pull-left"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Compound Target Network</span></a>
+                                <a class="pull-right fa fa-navicon" role="button" data-toggle="collapse" data-parent="#accordion5" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive" style="font-size:24px">
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
+                                <div class="panel-body" id="targetsNetwork" style="position:relative;height:700px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-group" id="accordion6" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-info">
+                            <div class="panel-heading" role="tab" id="headingSix">
+                                <a class="pull-left"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Pathway</span></a>
+                                <a class="pull-right fa fa-navicon" role="button" data-toggle="collapse" data-parent="#accordion6" href="#collapseSix" aria-expanded="true" aria-controls="collapseFive" style="font-size:24px">
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSix">
+                                <div class="panel-body table-responsive">
+                                    <table data-sort-name="Category" data-sort-order="asc" data-show-columns="true" data-show-export="true" data-show-toggle="true" data-pagination="true" data-page-list="[10,25,50,100,All]" data-page-size="10" data-detail-formatter="detailFormatter" data-search="true" class="table table-striped table-hover pathwaytable">
+                                        <thead>
+                                            <tr class="">
+                                                <th data-field="Category"   data-sortable="true" data-switchable="false">Category</th>
+                                                <th data-field="Term"  	data-sortable="true" data-switchable="false">Term</th>
+                                                <th data-field="Count" 	data-sortable="true" >Count</th>  
+                                                <th data-field="Percent"  	data-sortable="true" data-switchable="false">Percent</th>
+                                                <th data-field="Pvalue" 	data-sortable="true" >Pvalue</th>   	             			
+                                                <th data-field="Genes"  	data-sortable="true" data-visible="false">Genes</th>
+                                                <th data-field="ListTotal" 	data-sortable="true" data-visible="false">ListTotal</th>
+                                                <th data-field="PopHits"  	data-sortable="true" data-visible="false">PopHits</th>
+                                                <th data-field="PopTotal" 	data-sortable="true" data-visible="false">PopTotal</th>
+                                                <th data-field="FoldEnrichment"  	data-sortable="true" >FoldEnrichment</th>
+                                                <th data-field="Bonferroni" 	data-sortable="true" data-visible="false">Bonferroni</th>
+                                                <th data-field="Benjamini"  	data-sortable="true" >Benjamini</th>
+                                                <th data-field="FDR" 	data-sortable="true" >FDR</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section id="content6" class="drugsProf-display" data-name="drugs">
+                    <!-- 结构预览顶部选项 -->
+                    <ul class="nav structure-option">
+                        <!-- <li class="pull-left">
+                            <button class="btn btn-default">Similarity</button>
+                        </li>
+                        <li class="btn-group js-chemddDegreeCtrl pull-left">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-degree="15" style="margin-right: 5px;">>=50 &nbsp;<span class="caret"></span>
+                                </button>
+                            <ul class="dropdown-menu" role="menu" style="min-width: 80px;">
+                                <li><a href="javascript:void(0)" value="90">>=90%</a></li>
+                                <li><a href="javascript:void(0)" value="80">>=80%</a></li>
+                                <li><a href="javascript:void(0)" value="70">>=70%</a></li>
+                                <li><a href="javascript:void(0)" value="60">>=60%</a></li>
+                                <li>
+                                    <a href="javascript:void(0)" value="59">
+                                        <60%</a>
+                                </li>
+                            </ul>
+                        </li> -->
+
+                        <li class="pull-right btn-reset">
+                            <button class="btn btn-default pull-right view-list"><i class="fa fa-list "></i></button>
+                        </li>
+                        <li class="pull-right btn-reset btn-margin">
+                            <button class="btn btn-default view-grid"><i class="fa fa-th-large "></i></button>
+                        </li>
+                        <li class="pull-right btn-reset btn-margin">
+                            <button class="btn btn-default js-dloadAllDrugs"><i class="fa fa-download"></i></button>
+                        </li>
+                    </ul>
+
+                    <!-- 分子结构显示 -->
+                    <ol class='list table-bordered' id='drugsFrame'>
+                        <li class="thead-row">
+                            <div class="thead-cell thead-mols">Mol</div>
+                            <div class="thead-cell thead-drugs">Drug</div>
+                            <p class="thead-cell tcell-sim tcell-info">Similarity</p>
+                            <p class="thead-cell tcell-cas tcell-info">Drug CAS</p>
+                            <p class="thead-cell tcell-dbID tcell-info">DrugBank ID</p>
+                            <p class="thead-cell tcell-name tcell-info">Drug Name</p>
+                        </li>
+                        <li class="frame" id="drugs-0">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher35 = new ChemDoodle.TransformCanvas('sketcher35', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher50 = new ChemDoodle.TransformCanvas('sketcher50', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-1">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher36 = new ChemDoodle.TransformCanvas('sketcher36', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher51 = new ChemDoodle.TransformCanvas('sketcher51', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-2">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher37 = new ChemDoodle.TransformCanvas('sketcher37', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher52 = new ChemDoodle.TransformCanvas('sketcher52', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-3">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher38 = new ChemDoodle.TransformCanvas('sketcher38', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher53 = new ChemDoodle.TransformCanvas('sketcher53', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-4">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher39 = new ChemDoodle.TransformCanvas('sketcher39', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher54 = new ChemDoodle.TransformCanvas('sketcher54', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-5">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher40 = new ChemDoodle.TransformCanvas('sketcher40', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher55 = new ChemDoodle.TransformCanvas('sketcher55', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-6">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher41 = new ChemDoodle.TransformCanvas('sketcher41', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher56 = new ChemDoodle.TransformCanvas('sketcher56', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-7">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher42 = new ChemDoodle.TransformCanvas('sketcher42', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher57 = new ChemDoodle.TransformCanvas('sketcher57', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-8">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher43 = new ChemDoodle.TransformCanvas('sketcher43', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher58 = new ChemDoodle.TransformCanvas('sketcher58', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-9">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher44 = new ChemDoodle.TransformCanvas('sketcher44', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher59 = new ChemDoodle.TransformCanvas('sketcher59', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-10">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher45 = new ChemDoodle.TransformCanvas('sketcher45', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher60 = new ChemDoodle.TransformCanvas('sketcher60', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-11">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher46 = new ChemDoodle.TransformCanvas('sketcher46', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher61 = new ChemDoodle.TransformCanvas('sketcher61', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-12">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher47 = new ChemDoodle.TransformCanvas('sketcher47', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher62 = new ChemDoodle.TransformCanvas('sketcher62', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-13">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher48 = new ChemDoodle.TransformCanvas('sketcher48', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher63 = new ChemDoodle.TransformCanvas('sketcher63', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                        <li class="frame" id="drugs-14">
+                            <div class="image tcell tcell-info">
+                                <script>
+                                    var sketcher49 = new ChemDoodle.TransformCanvas('sketcher49', 200, 200, true);
+                                </script>
+                            </div>
+                            <div class="tcell drugCanvas">
+                                <script>
+                                    var sketcher64 = new ChemDoodle.TransformCanvas('sketcher64', 200, 200, true);
+                                </script>
+                                <p class="grid-molBtn">
+                                    <span class="pull-left"></span>
+                                    <span class="pull-right"></span>
+                                </p>
+                            </div>
+                            <p class="tcell tcell-sim tcell-info"></p>
+                            <p class="tcell tcell-cas tcell-info"></p>
+                            <p class="tcell tcell-dbID tcell-info"></p>
+                            <p class="tcell tcell-name tcell-info"></p>
+                        </li>
+                    </ol>
+
+                    <!-- 翻页 -->
+                    <div class="JQ_pagination pull-right drugs_pagination">
+                        <a href="#" class="first" data-action="first">&laquo;</a>
+                        <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+                        <input type="text" readonly="readonly" data-max-page="40" />
+                        <a href="#" class="next" data-action="next">&rsaquo;</a>
+                        <a href="#" class="last" data-action="last">&raquo;</a>
+                    </div>
+                </section>
+            </div>
+            <!-- End result content -->
+
+            <!-- Start noResultTips -->
+            <div class="errorTips">
+                <p><span class="text-danger">Error: No such Job ID.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="returnPreview text-info" style="cursor: pointer;"><i class="fa fa-reply"></i>&nbsp;Go back to the previous page.</a></p>
+            </div>
+            <!-- End noResultTips -->
+        </div>
+        <!-- End main content -->
+    </div>
+    <div class="clearfix"></div>
+
+    <!-- Start footer -->
+    <footer>
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="service">Service</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="result.html">Result</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="help">Help</a></li>
+        </ul>
+        <p style="text-align: center;padding: 0;margin: 0 auto;width: 350px;">
+            <span style="line-height:40px;float:left;color:darkgray">Copyright © 2020-2021 GIM  All rights reserved</span>
+            <a class="visitor-record" style="width: 40px; display:inline-block">  
+            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/5.js?i=5cyqgqeeo3e&amp;m=2&amp;c=ff0000&amp;cr1=ffffff" async="async"></script>
+        </a>
+        </p>
+    </footer>
+    <!-- End footer -->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document" aria-hidden="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- 单个分子详细信息 -->
+                    <div class="mol-detail">
+                        <div id="innerMolTabContent">
+                            <div id="molStruc">
+                                <div class="col-md-6">
+                                    <script type="text/javascript">
+                                        var sketcher30 = new ChemDoodle.TransformCanvas('sketcher30', 300, 280, true);
+                                    </script>
+                                </div>
+                                <div class="col-md-6">
+                                    <canvas id="selectRadar" width="300px" height="280px"></canvas>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="" id="molProp">
+                                <table class="table table-hover table-bordered table-striped singleMolInfo">
+                                    <colgroup span="4">
+                                        <col width="25%" align="left">
+                                        <col width="25%" align="left">
+                                        <col width="25%" align="left">
+                                        <col width="25%" align="left">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>MolWeight</th>
+                                            <td class="singleMol_MW"></td>
+                                            <th>Rotatable bonds</th>
+                                            <td class="singleMol_RB"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>H_Donor</th>
+                                            <td class="singleMol_HBD"></td>
+                                            <th>H_Acceptor</th>
+                                            <td class="singleMol_HBA"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>A_logP</th>
+                                            <td class="singleMol_Alogp"></td>
+                                            <th>TPSA</th>
+                                            <td class="singleMol_tpsa"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 分子骨架详细信息 -->
+                    <div class="scaffold-detail">
+                        <ul class="scaffold-list list-unstyled">
+                            <li class="scafD-0">
+                                <script type="text/javascript">
+                                    var sketcher31 = new ChemDoodle.TransformCanvas('sketcher31', 215, 210, true);
+                                </script>
+                                <span class="scafD-mol-name-0"></span>
+                            </li>
+                            <li class="scafD-1">
+                                <script type="text/javascript">
+                                    var sketcher32 = new ChemDoodle.TransformCanvas('sketcher32', 215, 210, true);
+                                </script>
+                                <span class="scafD-mol-name-1"></span>
+                            </li>
+                            <li class="scafD-2">
+                                <script type="text/javascript">
+                                    var sketcher33 = new ChemDoodle.TransformCanvas('sketcher33', 215, 210, true);
+                                </script>
+                                <span class="scafD-mol-name-2"></span>
+                            </li>
+                            <li class="scafD-3">
+                                <script type="text/javascript">
+                                    var sketcher34 = new ChemDoodle.TransformCanvas('sketcher34', 215, 210, true);
+                                </script>
+                                <span class="scafD-mol-name-3"></span>
+                            </li>
+                        </ul>
+                        <!-- 翻页组件 -->
+                        <nav aria-label="...">
+                            <ul class="pager">
+                                <li><a href="#" class="previousPage"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                                <li><a href="#" class="nextPage">Next <span aria-hidden="true">&rarr;</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/json2/20160511/json2.min.js"></script>
+    <script src="https://cdn.bootcss.com/Chart.js/0.2.0/Chart.min.js"></script>
+    <script src="https://cdn.bootcss.com/d3/3.5.1/d3.min.js"></script>
+    <script src="https://cdn.bootcss.com/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="https://cdn.bootcss.com/datalib/1.6.2/datalib.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script src="https://cdn.bootcss.com/3Dmol/1.1.1/3Dmol-nojquery-min.js"></script>
+    <script src="https://cdn.bootcss.com/vis/4.16.0/vis.min.js"></script>
+    <script src="static/js/library/icheck.min.js"></script>
+    <script src="static/js/library/bootsnav.js"></script>
+    <script src="static/js/library/saveSvgAsPng.js"></script>
+    <script src="static/js/library/jquery.jqpagination.min.js"></script>
+    <script src="static/js/library/bootstrap-table-export.js"></script>
+    <script src="static/js/library/tableExport.js"></script>
+    <!-- for chart -->
+    <script src="static/js/_main.js"></script>
+    <script src="static/js/view.js"></script>
+    <script src="static/js/drawChart.js"></script>
+
+    <script src="static/js/common.js"></script>
+    <script src="static/js/result.js"></script>
+    <script src="static/js/btnBindFunction.js"></script>
+    <script src="static/js/chemdoodleInitial.js"></script>
+
+</body>
+
+</html>

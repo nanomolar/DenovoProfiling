@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="de novo, chemical library, profiling" />
+    <meta name="revised" content="当前版本：v1.0" />
+
+    <title>DenovoProfiling result</title>
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <!--  bootstrap  -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--  导航组件  -->
+    <link href="static/css/bootsnav.css" rel="stylesheet">
+    <!--  全局样式设置  -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/color.css" rel="stylesheet">
+    <link href="static/css/overwrite.css" rel="stylesheet">
+    <!--  字体设置  -->
+    <link href="static/fonts/FontAwesome/font-awesome.css" rel="stylesheet">
+    <style type="text/css">
+        .check-box {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            -webkit-box-shadow: 0px 0px 10px rgba(43, 48, 51, 0.08);
+            -moz-box-shadow: 0px 0px 10px rgba(43, 48, 51, 0.08);
+            box-shadow: 0px 0px 10px rgba(43,48,51,0.08);
+        }
+        .input-group .styleRewrite {
+            background: #fff;
+            border: none;
+            font-weight: 700;
+        }
+        .jobSearch {
+            margin: 50px 0;
+            width: 50%;
+        }
+        .jsJobsubmit2:hover {
+            cursor : pointer;
+        }
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+        <script src="static/js/library/excanvas.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="result">
+  <noscript class="noscript bg-warning text-danger">Javascript is required for this site !</noscript>
+    <div id="myAlert" class="alert alert-warning fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warning！</strong>Your browser version is too low, please download IE9 and above or other browsers.
+    </div>
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-default navbar-mobile bootsnav">
+        <!-- Start Top Search -->
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon jsJobsubmit"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control jsJobID" placeholder="Input jobid here">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+
+        <div class="container">
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>                
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>                   
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index"><img src="static/images/brand/logo.png" class="logo" alt=""></a>
+            </div>
+            <!-- End Header Navigation -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li><a href="index" >Home</a></li>
+                    <li><a href="service" >Service</a></li>
+                    <li><a href="#" class="nav-a-active">Result</a></li>
+                    <li><a href="help" >Help</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- End Navigation -->
+
+    <div class="clearfix"></div>
+    
+    <div class="container-out">
+    <!-- Start main content -->
+    <div class="container check-box">
+        <!-- Start JobID search -->        
+        <div class="input-group jobSearch">
+            <span class="input-group-addon styleRewrite">Enter JobID:</span>           
+            <input type="text" class="form-control jsJobID2" placeholder="Input jobid here">
+            <span class="input-group-addon jsJobsubmit2" aria-hidden="true"><i class="fa fa-search"></i></span>
+        </div>
+        <p class="bg-danger text-danger errorJobTip" style="display:none">Please enter a valid JobID.</p>
+		<p class="bg-success text-success JobTip" style="display:none">The status of Job: <span id="JobID"></span> is <span id="Status"></span>. Please check later</p>
+		<p class="bg-danger text-danger FailTip" style="display:none">The status of Job: <span id="JobID2"></span> is <span id="Status2"></span>. Please check your submit files and resubmit</p>
+        <!-- End JobID search -->
+    </div>
+    <!-- End main content -->
+    </div>
+    <div class="clearfix"></div>
+    
+    <!-- Start footer -->
+    <footer>
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation" ><a href="/">Home</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation" ><a href="service">Service</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation" ><a href="result.html">Result</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation" ><a href="help">Help</a></li>
+        </ul>
+        <p style="text-align: center;padding: 0;margin: 0 auto;width: 350px;">
+            <span style="line-height:40px;float:left;color:darkgray">Copyright © 2020-2021 GIM  All rights reserved</span>
+            <a class="visitor-record" style="width: 40px; display:inline-block">  
+            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/5.js?i=5cyqgqeeo3e&amp;m=2&amp;c=ff0000&amp;cr1=ffffff" async="async"></script>
+        </a>
+        </p>
+    </footer>
+    <!-- End footer -->
+
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/d3/3.5.1/d3.min.js"></script>    
+    <script src="static/js/library/bootsnav.js"></script>
+	<script src="static/js/jobcheck.js"></script>
+    <script src="static/js/common.js"></script>
+</body>
+</html>

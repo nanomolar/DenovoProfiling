@@ -1,0 +1,93 @@
+/* ==============================================================
+
+File name : Service page in CSS
+Author : RCDD Dujiewen
+Version : v1.0.0
+Created : 10 Jan 2017
+Last update : 14 Feb 2017
+
+============================================================== */
+html {
+  overflow-y: scroll;
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* @group 面版模块overwrite */
+.service .panel-heading {
+    padding:7px 15px;
+}
+.panel-heading span {
+    font-weight: 600;
+}
+
+.service-content {
+    margin-top: 30px;
+}
+
+.file-type {
+   /*  border-radius: 5px;
+   border: 1px solid #ddd; */
+    padding: 0;
+}    
+
+.paste-textarea textarea {
+    width: 100%;
+    max-width: 725px;
+    border-color: #ddd;
+    border-radius: 5px;
+    height: 234px;
+}
+.paste-tip {
+    border: 1px #ddd solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.paste-tip p {
+    font-size: 15px;
+    padding: 5px 10px;
+    margin-bottom: 0;
+}
+
+/*   分析工具   */
+.analysis-tool {
+    padding:15px 20px 0; 
+}
+.analysis-tool label:hover {
+    cursor: pointer;
+}
+.btn-run {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+.btn-run .btn-info {
+    background:#0099CC; 
+    font-size: 16px;
+    margin-right: 20px;
+}
+.btn-run .btn:hover {
+    background:#2ea2dd;
+}
+
+.loading {
+  display: none;
+}
+
+.hiddenTip {
+  display: none;
+}
+.text-tips:hover .hiddenTip {
+  display: inline-block;
+}

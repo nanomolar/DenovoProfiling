@@ -1,0 +1,54 @@
+﻿.jumbotron{
+    /* opacity:0.7;
+    filter:alpha(opacity=70); */
+    -webkit-box-shadow: 0px 0px 10px rgba(43, 48, 51, 0.08);
+    -moz-box-shadow: 0px 0px 10px rgba(43, 48, 51, 0.08);
+    box-shadow: 0px 0px 10px rgba(43,48,51,0.08);
+    /* background-color: #f6f9fa; */
+    background: rgb(52,179,234) url(../img/bg.png) no-repeat;
+    margin-top: 50px;
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+.jumbotron h2 {
+    color: #333366;
+    font-weight: 400;
+}
+.jumbotron p {
+    color: #333366;
+}
+.feature {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.feature h4 {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 26px;
+}
+.feature li a {
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+    text-align: center;
+    color: #0099CC;
+}
+.feature li a span {
+	font-size: 13px;
+	line-height: 2.2;
+    display: inline-block;
+}
+
+.list-inline {
+    width: 85%;
+    margin: 0 auto;
+}
+.list-inline img {
+    width: 100px;
+    height: 50px;
+    /* padding-left: 10px; */
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="de novo, chemical library, profiling" />
+    <meta name="revised" content="当前版本：v1.0" />
+
+    <title>DenovoProfiling help</title>
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <!--  bootstrap  -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--  bootstrap复选框组件  -->
+    <link href="static/flat/orange.css" rel="stylesheet">
+    <!--  导航组件  -->
+    <link href="static/css/bootsnav.css" rel="stylesheet">
+    <!--  全局样式设置  -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/color.css" rel="stylesheet">
+    <link href="static/css/overwrite.css" rel="stylesheet">
+    <!-- <link href="static/css/index.css" rel="stylesheet"> -->
+    <link href="static/css/help.css" rel="stylesheet">
+
+    <!--  字体设置  -->
+    <link href="static/fonts/FontAwesome/font-awesome.css" rel="stylesheet">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="home">
+    <noscript class="noscript bg-warning text-danger">Javascript is required for this site !</noscript>
+    <div id="myAlert" class="alert alert-warning fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warning！</strong>Your browser version is too low, please download IE9 and above or other browsers.
+    </div>
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-default navbar-mobile bootsnav">
+        <!-- Start Top Search -->
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon jsJobsubmit"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control jsJobID" placeholder="Input jobid here">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+
+        <div class="container">
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index"><img src="static/images/brand/logo.png" class="logo" alt=""></a>
+            </div>
+            <!-- End Header Navigation -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li><a href="index">Home</a></li>
+                    <li><a href="service">Service</a></li>
+                    <li><a href="result.html">Result</a></li>
+                    <li><a href="#" class="nav-a-active">Help</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- End Navigation -->
+
+    <div class="clearfix"></div>
+
+    <!-- Start Home -->
+    <div class="container-out" style="margin-left: calc(100vw - 100%);">
+        <div class="container">
+            <div class="">
+                <div class="tab" role="tabpanel">
+                    <ul class="nav nav-tabs" role="tablist" style="margin-top: 40px;">
+                        <li role="presentation" class="active"><a href="#Section1" aria-controls="Tutorial" role="tab" data-toggle="tab"><i class="fa fa-tree"></i> Tutorial </a></li>
+                        <li role="presentation"><a href="#Section2" aria-controls="About us" role="tab" data-toggle="tab"><i class="fa fa-sitemap"></i> About us</a></li>
+                    </ul>
+                    <style type="text/css">
+                        .tab .nav-tabs>li.active>a {
+                            color: #fff;
+                            background-color: #1d7db1;
+                        }
+                    </style>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="Section1">
+                            <div>
+                                <h4>1. Introduction</h4>
+                                <p>DenovoProfiling, a webserver dedicated for de novo generated molecule library profiling. We aim to provide a user-friendly public webserver to support the structure and chemical space visualization, scaffold analysis, molecular alignment, drugs profiling, targets and pathway profiling. We integrated cheminformatics tools and databases to provide comprehensive annotations for the de novo generated molecules. We believe that DenovoProfiling could be an efficient tool for user to capture the knowledge of de novo generated molecules quickly.</p>
+                            </div>
+							<div>
+							<h4>2. Framework of DenovoProfiling</h4>
+							<p class="introductionImg">
+                                    <img src="static/img/introduction/framework.png">
+                                </p>
+							</div>
+                            <div>
+                            <h4>3. Supported Chemical Formats</h4>
+                                <p>Four widely used chemical formats are supported in DenovoProfiling: SDF, SMILES, InChI, and CDX. All those formats files can be uploaded or the file contents can be pasted and submitted to the web server, except for the binary CDX format, which cannot be pasted. The Open Babel (www.openbabel.org) program was used for chemical file format conversion.</p>
+                                <table class="table table-hover table-bordered" style="width: 97%;margin: 0 auto 10px;">
+                                    <thead>
+                                        <tr>
+                                            <th>Formats</th>
+                                            <th>Description</th>
+                                            <th>Upload</th>
+                                            <th>Paste</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>SDF</td>
+                                            <td>A chemical-data file formats developed by MDL, for holding information about the atoms, bonds, connectivity and coordinates of multiple molecules.</td>
+                                            <td class="dj_icon"><i class="fa fa-check"></i></td>
+                                            <td class="dj_icon"><i class="fa fa-check"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>SMILES</td>
+                                            <td>The simplified molecular-input line-entry system (SMILES) is a specification in form of a line notation for describing the structure of chemical species using short ASCII strings.</td>
+                                            <td class="dj_icon"><i class="fa fa-check"></i></td>
+                                            <td class="dj_icon"><i class="fa fa-check"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>InChI</td>
+                                            <td>The IUPAC International Chemical Identifier (InChI) is a textual identifier for chemical substances, designed to provide a standard and human-readable way to encode molecular information.</td>
+                                            <td class="dj_icon"><i class="fa fa-check"></i></td>
+                                            <td class="dj_icon"><i class="fa fa-check"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CDX</td>
+                                            <td>A binary file type created by CambridgeSoft Corporation's ChemDraw chemical structure application.</td>
+                                            <td class="dj_icon"><i class="fa fa-check"></i></td>
+                                            <td class="dj_icon"><i class="fa fa-close"></i></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <h4>4. Modules</h4>
+
+                                <h5 id="molStruc">4.1 Identification & Visualization</h5>
+                                <p>User could browse the structures with mapped PubChem Compound ID (CID). The properties including molecular weight, LogP, HBA, HBD, number of rotatable bonds, TPSA are given by clicking upright plus button. The CID is provided at bottom right and linked the PubChem which provides more detailed compound information.</p>
+                                <p class="introductionImg">
+                                    <img src="static/img/introduction/iden-vis-1.png">
+                                    <img src="static/img/introduction/iden-vis-2.png">
+                                </p>
+
+                                <h5 id="molDiver">4.2 Chemical Space</h5>
+                                <p>Two important approaches：similarity maps and principal components analysis (PCA) were used in DenovoProfiling. The generated similarity heatmap and PCA plots are interactive, which user could move mouse to the target of point, and the corresponding structure is visualized. Meanwhile, the distribution of drug-like properties was also plotted.</p>
+                                <p class="introductionImg">
+                                    <img src="static/img/introduction/heatmap.png">
+									<img src="static/img/introduction/PCA.png">
+									<img src="static/img/introduction/properties_distribution.png">
+                                </p>
+
+                                <h5 id="molScaf">4.3 Scaffold Analysis</h5>
+                                <p>Bemis and Murcko (BM) scaffold approach was used to generate the scaffold for de novo generated library. The complexity and cyclicity of the scaffolds and statistics of each scaffold were interactive illustrated with scatter plot and histogram plot. The structures of scaffolds and their number of molecules were illustrated in grid table. The members of molecules for each scaffold could be browsed by clicking the upright plus button.</p>
+                                <p class="introductionImg">
+                                    <img src="static/img/introduction/scaffold-1.png">
+									<img src="static/img/introduction/scaffold-2.png">
+                                </p>
+
+                                <h5 id="molAlign">4.4 Molecular Alignment</h5>
+                                <p>Shape and pharmacophore combined approach in WEGA was used in DenovoProfiling for molecular alignment. User can upload a library of 3D structures, and DenovoProfiling would align all the structures to the first structure of the library. User could browse the alignment results, and select the molecules of interest to see the alignment result.</p>
+                                <p class="introductionImg">
+                                    <img src="static/img/introduction/align.png">
+                                </p>
+
+                                <h5 id="molDrug">4.5 Drugs Mapping</h5>
+                                <p>Drugs structures library were prepared from DrugBank database, and the similarity calculations were carried on between the submitted de novo library and drug library. The grid view and the table view are provided. The DrugBank ID are also provided and linked to original database. Details of these drugs information could be obtained directly.</p>
+                                <p class="introductionImg">
+                                    <img src="static/img/introduction/drugs-grid.png">
+                                    <img src="static/img/introduction/drugs-table.png">
+                                </p>
+
+                                <h5 id="molTarg">4.6 Target & Pathway</h5>
+                                <p>The ligands and bioactivity data in ChEMBL database were prepared and extracted. The Open Babel was used to generate the unique InChI Key for each structure, then using the InChI Key as query parameter to search against ChEMBL database, the bioactivity data such as Ki, Kd, IC50 and EC50, and corresponding references are extracted. All those results can be analyzed via a user-friendly table view. Those results are also can be downloaded for local analysis. The compound target relations were further illustrated using compound target network. The targets are further enriched to pathways and the KEGG pathways are summarized in table.</p>
+                                <p class="introductionImg">
+                                    <img src="static/img/introduction/target.png">
+									<img src="static/img/introduction/pathway.png">
+                                </p>
+                            </div>
+                            <div>
+                                <h4>4. Databases and Tools</h4>
+                                <p>DenovoProfiling is constructed using various open databases and tools for different purposes. Here we appreciate their contributions and the tools names, the purposes and the links are list below.</p>
+                                <table class="table table-hover table-bordered" style="width: 97%;margin: 0 auto 20px;">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Tools</th>
+                                            <th>Purpose</th>
+                                            <th>Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>ChEMBL22</td>
+                                            <td>target profiling</td>
+                                            <td><a href="https://www.ebi.ac.uk/chembl/" target="_blank" rel="noopener noreferrer">www.ebi.ac.uk/chembl</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>DrugBank</td>
+                                            <td>drug profiling</td>
+                                            <td><a href="https://www.drugbank.ca/" target="_blank" rel="noopener noreferrer">www.drugbank.ca</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>ChemDoodle Web</td>
+                                            <td>structure visulaization</td>
+                                            <td><a href="https://web.chemdoodle.com/" target="_blank" rel="noopener noreferrer">web.chemdoodle.com</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>3Dmol.js</td>
+                                            <td>molecular alignment results</td>
+                                            <td><a href="http://3dmol.csb.pitt.edu" target="_blank" rel="noopener noreferrer">3dmol.csb.pitt.edu</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>D3.JS</td>
+                                            <td>descriptors distribution</td>
+                                            <td><a href="https://d3js.org/" target="_blank" rel="noopener noreferrer">d3js.org</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Open Babel</td>
+                                            <td>chemical file format convertion</td>
+                                            <td><a href="http://openbabel.org/wiki/Main_Page" target="_blank" rel="noopener noreferrer">openbabel.org</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>PaDEL</td>
+                                            <td>properties and fingerprint calculation</td>
+                                            <td><a href="http://padel.nus.edu.sg/software/padeldescriptor" target="_blank" rel="noopener noreferrer">padel.nus.edu.sg/software/padeldescriptor</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>MySQL</td>
+                                            <td>storage database</td>
+                                            <td><a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer">www.mysql.com</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>Golang</td>
+                                            <td>web server language</td>
+                                            <td><a href="https://golang.org/" target="_blank" rel="noopener noreferrer">golang.org</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>R</td>
+                                            <td>calculate distance</td>
+                                            <td><a href="https://www.r-project.org/" target="_blank" rel="noopener noreferrer">www.r-project.org</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section2">
+                            <div class="">
+                                <h4>About us</h4>
+                                <p>
+                                    Research Group for Gut Microbiome and Health (RGGMH) at Guangdong Institute of Microbiology was established by Dr. Liwei Xie and funded by grants from Guangdong Academy of Sciences and Guangdong Institute of Microbiology. The research group focuses on the AI-algorithm development and application in drug design, functional and health benefit small molecules and nature products design and screening, targeting gut microbial dysbiosis-associated metabolic diseases, such as Type 2 diabetes (T2D) and obesity.
+                                </p>
+
+                                <h4>Address</h4>
+                                <p>State Key Laboratory of Applied Microbiology Southern China,Guangdong Institute of Microbiology,<br>
+								100 Xianlie Middle Rd, BLD58 2rd Floor,Guangzhou, Guangdong, China, 510070
+                                </p>
+                                <h4>Contact</h4>
+                                <p> 
+									Fax: +86-020-37656322<br>								
+									Telephone: +86-17688872852<br>	
+                                    Email: <a href="mailto:xielw@gdim.cn">xielw@gdim.cn</a><br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="service">Service</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="result.html">Result</a></li>
+            <li role="presentation" class="separator"><a>|</a></li>
+            <li role="presentation"><a href="help">Help</a></li>
+        </ul>
+        <p style="text-align: center;padding: 0;margin: 0 auto;width: 350px;font-size: 14px;">
+            <span style="line-height:40px;float:left;color:darkgray">Copyright © 2020-2021 GIM  All rights reserved</span>
+            <a class="visitor-record" style="width: 40px; display:inline-block">  
+            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/5.js?i=5cyqgqeeo3e&amp;m=2&amp;c=ff0000&amp;cr1=ffffff" async="async"></script>
+        </a>
+        </p>
+    </footer>
+
+    <!-- End Home -->
+    <div class="clearfix"></div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="static/js/library/bootsnav.js"></script>
+    <script src="static/js/common.js"></script>
+</body>
+
+</html>
