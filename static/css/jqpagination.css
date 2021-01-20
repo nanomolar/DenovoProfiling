@@ -1,0 +1,82 @@
+.JQ_pagination {
+  margin-top: 10px; 
+  border: 1px solid #CDCDCD;
+  border-radius: 3px;
+}
+.JQ_pagination a,.JQ_pagination_10 a,.JQ_pagination_15 a,
+.JQ_pagination_20 a,.JQ_pagination_25 a,.JQ_pagination_30 a {
+  display: inline-block;
+  float: left;
+  width: 30px;
+  height: 30px;
+  line-height: 100%;
+  outline: none;
+  border-right: 1px solid #CDCDCD;
+  border-left: 1px solid #CDCDCD;
+  color: #7a7d7f;
+  vertical-align: -2px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 25px; /*修改<<和<以及>和>>的大小。要比例对称*/
+  font-family: Times, 'Times New Roman', Georgia, Palatino;
+  /* ATTN: need a better font stack */
+  background-color: #f4f5f7;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f3f3), color-stop(100%, lightgrey));
+  background-image: -webkit-linear-gradient(#f3f3f3, lightgrey);
+  background-image: linear-gradient(#f3f3f3, lightgrey); }
+
+.JQ_pagination a:hover, .JQ_pagination a:focus, .JQ_pagination a:active,
+.JQ_pagination_10 a:hover, .JQ_pagination_10 a:focus, .JQ_pagination_10 a:active,
+.JQ_pagination_15 a:hover, .JQ_pagination_15 a:focus, .JQ_pagination_15 a:active,
+.JQ_pagination_20 a:hover, .JQ_pagination_20 a:focus, .JQ_pagination_20 a:active,
+.JQ_pagination_25 a:hover, .JQ_pagination_25 a:focus, .JQ_pagination_25 a:active,
+.JQ_pagination_30 a:hover, .JQ_pagination_30 a:focus, .JQ_pagination_30 a:active{
+  background-color: #cecece;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e4e4e4), color-stop(100%, #cecece));
+  background-image: -webkit-linear-gradient(#e4e4e4, #cecece);
+  background-image: linear-gradient(#e4e4e4, #cecece); 
+}
+
+
+.JQ_pagination a.disabled, .JQ_pagination a.disabled:hover, .JQ_pagination a.disabled:focus, .JQ_pagination a.disabled:active,
+.JQ_pagination_10 a.disabled, .JQ_pagination_10 a.disabled:hover, .JQ_pagination_10 a.disabled:focus, .JQ_pagination_10 a.disabled:active,
+.JQ_pagination_15 a.disabled, .JQ_pagination_15 a.disabled:hover, .JQ_pagination_15 a.disabled:focus, .JQ_pagination_15 a.disabled:active,
+.JQ_pagination_20 a.disabled, .JQ_pagination_20 a.disabled:hover, .JQ_pagination_20 a.disabled:focus, .JQ_pagination_20 a.disabled:active,
+.JQ_pagination_25 a.disabled, .JQ_pagination_25 a.disabled:hover, .JQ_pagination_25 a.disabled:focus, .JQ_pagination_25 a.disabled:active,
+.JQ_pagination_30 a.disabled, .JQ_pagination_30 a.disabled:hover, .JQ_pagination_30 a.disabled:focus, .JQ_pagination_30 a.disabled:active {
+  background-color: #f3f3f3;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f3f3f3), color-stop(100%, lightgrey));
+  background-image: -webkit-linear-gradient(#f3f3f3, lightgrey);
+  background-image: linear-gradient(#f3f3f3, lightgrey);
+  color: #A8A8A8;
+  cursor: default; 
+}
+
+.JQ_pagination a:first-child,.JQ_pagination_10 a:first-child ,.JQ_pagination_15 a:first-child ,
+.JQ_pagination_20 a:first-child,.JQ_pagination_25 a:first-child, .JQ_pagination_30 a:first-child {
+  border: none;
+  border-radius: 2px 0 0 2px; 
+}
+
+.JQ_pagination a:last-child ,.JQ_pagination_10 a:last-child,.JQ_pagination_15 a:last-child,
+.JQ_pagination_20 a:last-child ,.JQ_pagination_25 a:last-child,.JQ_pagination_30 a:last-child{
+  border: none;
+  border-radius: 0 2px 2px 0; 
+}
+
+.JQ_pagination input,.JQ_pagination_10 input,.JQ_pagination_15 input,
+.JQ_pagination_20 input,.JQ_pagination_25 input,.JQ_pagination_30 input {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 220px;
+  height: 30px;
+  font-size: 16px;
+  font-family: Arial;
+  font-weight: 400;
+  outline: none;
+  border: none;
+  vertical-align: middle;
+  text-align: center; 
+}

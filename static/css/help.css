@@ -1,0 +1,65 @@
+body p {
+	text-align: justify; 
+	font-size: 16px;
+	text-indent: 2;
+	padding: 0 20px;
+}
+body h4 {
+	padding-bottom: 5px;
+	border-bottom: 2px solid rgba(0,0,0,.1);
+	color: #1d7db1;
+}
+.tab-content {
+	margin-top: 15px;
+}
+.nav-tabs li {
+	min-width: 150px;
+	border-left:1px solid #fff;
+}
+.wrap .nav-tabs li a {
+	margin-right: 0;
+}
+.intro-img{
+	width: 700px;
+	margin:0 auto;
+}
+
+.intro-img img{
+	/* border:2px solid #ddd; */
+	width: 700px;
+	height: 480px;
+}
+/*	@group Download
+----------------------------------------------------------------------------------*/
+.wrap .panel-title {
+	font-size: 20px;
+	text-align: center;
+}
+.panel .table .fa {
+	font-size: 18px;
+}
+body table tr {
+	height: 30px;
+}
+.fa-check {
+	color:#00CC66;
+}
+.fa-close {
+	color:#CC3333;
+}
+.dj_icon {
+	text-align: center;
+	vertical-align: middle;
+}
+.tab-content h5{
+	text-indent: 0.5em;
+}
+.introductionImg {
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
+.introductionImg img {
+	border: 1px solid #ccc;
+	width:600px;
+}

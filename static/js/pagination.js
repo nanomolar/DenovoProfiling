@@ -1,0 +1,3 @@
+function scaf_pagination (argument) {
+	// body... 
+}
