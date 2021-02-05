@@ -7,8 +7,7 @@ With the advances of deep learning techniques, various architectures for molecul
 ## Web site
 http://denovoprofiling.xielab.net
 
-## Framework
-![](https://github.com/nanomolar/DenovoProfiling/blob/main/static/img/introduction/framework.png "framework")
+
 
 
 
