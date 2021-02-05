@@ -8,7 +8,7 @@ With the advances of deep learning techniques, various architectures for molecul
 http://denovoprofiling.xielab.net
 
 ## Framework
-![](http://denovoprofiling.xielab.net/static/img/introduction/framework.png)
+![](http://denovoprofiling.xielab.net/static/img/introduction/framework.png "framework")
 
 
 
