@@ -487,3 +487,31 @@ func DrugBankToDatabase(SDFile string) (int64, error) {
 	fmt.Println(strucCnt)
 	return strucCnt, nil
 }
+
+
+// delete submitted structures over 15 days
+func CleanJob() {
+	fmt.Println("Start to clean Job")
+	var jobs []models.Job
+	var job models.Job
+	t := time.Now().AddDate(0, 0, -15)
+	fmt.Println(t)
+	_, err := job.Query().Filter("finish_time__lt", t).All(&jobs)
+	if err != nil {
+		fmt.Println(err)
+	}
+	for _, j := range jobs {
+		fmt.Println(j.JobId)
+		fmt.Println(j.FinishTime)
+		var m models.Structure
+		var ms []models.Structure
+		_, err := m.Query().Filter("job_id", j.JobId).All(&ms)
+		if err != nil {
+			fmt.Println(err)
+		}
+		for i, _ := range ms {
+			ms[i].Delete()
+		}
+	}
+}
+
