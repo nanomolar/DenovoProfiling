@@ -98,16 +98,34 @@ func (this *MainController) Profiling() {
 		return
 	}
 
+	// check job overdue, only keep job within 15 days
+	t := time.Now().AddDate(0, 0, -15)
+	fmt.Println(t)
+	fmt.Println(j.StartTime)
+	if t.After(j.StartTime) {
+		fmt.Println("true")
+		this.responseMsg.ErrorMsg("Job is overdue!", nil)
+		this.Data["json"] = this.responseMsg
+		this.ServeJSON()
+		return
+	}
+
 	// check job status
 
 	JobPath := beego.AppConfig.String("jobPath") + j.JobId + "/"
 	inchiKeyFile := JobPath + "query.inchikey"
 	pubchemMapResultFile := JobPath + "pubchem_mapped.csv"
+
 	if j.Status == "Running" {
 		util.PubchemMapping(inchiKeyFile, pubchemMapResultFile)
 	}
-	util.ReadPubchemMapResult(pubchemMapResultFile, j.JobId)
-
+	check, _ := util.PathExists(pubchemMapResultFile)
+	if check {
+		util.ReadPubchemMapResult(pubchemMapResultFile, j.JobId)
+	} else {
+		fmt.Println("PubChem mapping failed")
+	}	
+	
 	// get mol infor
 	var mols []models.Structure
 	qs := orm.NewOrm().QueryTable("structure")
