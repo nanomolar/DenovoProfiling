@@ -97,50 +97,25 @@
     <div class="container service-content">
         <!-- Start input data -->
         <div class="panel panel-info">
-            <div class="panel-heading"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Input data</span>&nbsp;</div>
+            <div class="panel-heading"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Input your library</span>&nbsp;</div>
             <div class="tab-group">
-                <input id="tab1" type="radio" name="tabs" >
-                <label for="tab1">Upload</label>
-                <input id="tab2" type="radio" name="tabs" checked>
+                <input id="tab1" type="radio" name="tabs" value="content3" checked>
+                <label for="tab1">Draw</label>
+                <input id="tab2" type="radio" name="tabs" value="content2" >
                 <label for="tab2">Paste</label>
+                <input id="tab3" type="radio" name="tabs" value="content3" >
+                <label for="tab3">Upload</label>
 
                 <section id="content1">
-                    <form enctype="multipart/form-data" style="overflow: hidden;" class="fileType">
-                        <div class="form-group col-xs-12 col-sm-6 col-md-8" style="padding-left: 0;">
-                            <input id="molsFile" type="file" multiple class="file" data-overwrite-initial="false">
-                        </div>
-                        <div class="panel panel-info file-type col-xs-6 col-md-4">
-                            <div class="panel-heading"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Choose file type: </span>&nbsp;</div>
-                            <ul class="list-unstyled" style="padding-left: 15px;padding-top: 10px;">
-								<li>
-                                    <p class="text-black">
-                                        <input type="radio" name="iCheck" id="Smiles_t">
-                                        <label for="t_Smiles">Smiles Format</label>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="text-black">
-                                        <input type="radio" name="iCheck" id="SDF_t">
-                                        <label for="t_SDF">SDF Format</label>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="text-black">
-                                        <input type="radio" name="iCheck" id="InChI_t">
-                                        <label for="t_InChI">InChI Format</label>
-                                    </p>
-                                </li>
-                                
-                                <li>
-                                    <p class="text-black">
-                                        <input type="radio" name="iCheck" id="CDX_t">
-                                        <label for="t_CDX">CDX Format</label>
-                                    </p>
-                                </li>
-                            </ul>
-							
-                        </div>
-                    </form>
+                    <div class="marvin-component" style="margin:5px 5px 0;">
+                        <iframe id="iframe" src="../static/ipmDraw/editor.html" frameborder="0" width="60%" height="485px" class='embed-responsive-item'></iframe>
+                    </div>
+                    <div class="btn-import col-md-6" style="margin: 0 auto 10px; text-align:center">
+                        <button class="btn btn-primary importToPaste" type="button">Import To Textarea
+                            <!-- Import To Textarea<span class="badge"></span> -->
+                        </button>
+                    </div>
+                    <div class="clearfix"></div>
                 </section>
                 <section id="content2">
                     <form class="paste-textarea" style="overflow: hidden;">
@@ -152,26 +127,24 @@
                             <ul class="list-unstyled" style="padding-left: 15px;padding-top: 10px;">
                                 <li>
                                     <p class="text-black">
-                                        <input type="radio" name="iCheck" id="Smiles_t" value="Smiles_t" >
-                                        <label for="t_Smiles">Smiles Format</label>
+                                        <input type="radio" name="iCheck" id="Smiles_1" value="smiles" >
+                                        <label for="Smiles_1">Smiles Format</label>
                                     </p>
                                 </li>
 								<li>
                                     <p class="text-black">
-                                        <input type="radio" name="iCheck" id="SDF_t" value="SDF_t" >
-                                        <label for="t_SDF">SDF Format</label>
+                                        <input type="radio" name="iCheck" id="SDF_1" value="sdf" >
+                                        <label for="SDF_1">SDF Format</label>
                                     </p>
                                 </li>
                                 <li>
                                     <p class="text-black">
-                                        <input type="radio" name="iCheck" id="InChI_t" value="InChI_t" >
-                                        <label for="t_InChI">InChI Format</label>
+                                        <input type="radio" name="iCheck" id="InChI_1" value="inchi" >
+                                        <label for="InChI_1">InChI Format</label>
                                     </p>
                                 </li>
-                                
                             </ul>
-                        </div>
-						
+                        </div>	
 						<div class="btn-group search" style="margin:0px 0 10px 10px;text-align:center;">
                 			<a href="javascript:void(0)" class="btn btn-block btn-primary demo1">Demo 1</a>
 						</div>
@@ -182,9 +155,44 @@
                 			<a href="javascript:void(0)" class="btn btn-block btn-primary demo3">Demo 3</a>
 						</div>
                     </form>
-					
-					
-					
+                </section>
+                <section id="content3">
+                    <form enctype="multipart/form-data" style="overflow: hidden;" class="fileType">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-8" style="padding-left: 0;">
+                            <input id="molsFile" type="file" multiple class="file" data-overwrite-initial="false">
+                        </div>
+                        <div class="panel panel-info file-type col-xs-6 col-md-4">
+                            <div class="panel-heading"><i class="fa fa-outdent"></i>&nbsp;&nbsp;<span>Choose file type: </span>&nbsp;</div>
+                            <ul class="list-unstyled" style="padding-left: 15px;padding-top: 10px;">
+								<li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck3" id="Smiles_3" value='smiles'>
+                                        <label for="Smiles_3">Smiles Format</label>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck3" id="SDF_3" value='sdf'>
+                                        <label for="SDF_3">SDF Format</label>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck3" id="InChI_3" value='inchi'>
+                                        <label for="InChI_3">InChI Format</label>
+                                    </p>
+                                </li>
+                                
+                                <li>
+                                    <p class="text-black">
+                                        <input type="radio" name="iCheck3" id="CDX_3"  value='cdx'>
+                                        <label for="CDX_3">CDX Format</label>
+                                    </p>
+                                </li>
+                            </ul>
+							
+                        </div>
+                    </form>
                 </section>
             </div>
         </div>
@@ -199,7 +207,7 @@
                     <li>
                         <p class="text-black">
                             <label>
-                                <input type="checkbox" checked name="structure" disabled>
+                                <input type="checkbox" value="structure" name="checkbox" checked disabled>
                                 Identification & Visualization
                             </label>
                             <a href="help#molStruc" class="text-tips text-primary">
@@ -208,10 +216,23 @@
                             </a>
                         </p>
                     </li>
+                    <!--
                     <li>
                         <p class="text-black">
                             <label>
-                                <input type="checkbox" name="diversity">
+                                <input type="checkbox" value="admet" name="checkbox">
+                                ADMET Prediction
+                            </label>
+                            <a href="help#molStruc" class="text-tips text-primary">
+                                <i class="fa fa-question-circle"></i>
+                                <i class="hiddenTip">Click here to find more informations about ADMET</i>
+                            </a>
+                        </p>
+                    </li>-->
+                    <li>
+                        <p class="text-black">
+                            <label>
+                                <input type="checkbox" value="diversity" name="checkbox" id='chemicalSpace'>
                                 Chemical Space
                             </label>
                             <a href="help#molDiver" class="text-tips text-primary">
@@ -220,22 +241,62 @@
                             </a>
                         </p>
                     </li>
+                    <div id="collapseOne" class="panel-collapse collapse diversityType" role="tabpanel" aria-labelledby="headingOne" style="margin-left:18px;">
+                        <ul class="list-group" style="margin-bottom: 0;">
+                            <li class="list-group-item">
+                                <label>
+                                    <input type="checkbox" value="similarity" name="checkbox2" checked>
+                                    Similarity distribution
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span id="fpType">
+                                    Choose fingerprint:
+                                    <label>
+                                        <input type="radio" name="iCheck2" value='pubchem' checked>
+                                        PubChem
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="iCheck2" value='maccs'>
+                                        MACCS
+                                    </label>
+                                </span>
+                            </li>
+                            <li class="list-group-item">
+                                <label>
+                                    <input type="checkbox" value="pca" name="checkbox2" checked>
+                                    PCA Plot
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                <label>
+                                    <input type="checkbox" value="distribution" name="checkbox2">
+                                    Properties distribution 
+                                </label>
+                            </li>
+                            <li class="list-group-item">
+                                <label>
+                                    <input type="checkbox" value="scaffold" name="checkbox2">
+                                    Scaffold analysis
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
                     <li>
                         <p class="text-black">
                             <label>
-                                <input type="checkbox" name="scaffold">
-                                Scaffold Analysis
+                                <input type="checkbox" value="admet" name="checkbox">
+                                ADMET Prediction
                             </label>
-                            <a href="help#molScaf" class="text-tips text-primary">
+                            <a href="help#admet" class="text-tips text-primary">
                                 <i class="fa fa-question-circle"></i>
-                                <i class="hiddenTip">Click here to find more informations about Scaffold Analysis</i>
+                                <i class="hiddenTip">Click here to find more informations about ADMET</i>
                             </a>
                         </p>
                     </li>
                     <li>
                         <p class="text-black">
                             <label>
-                                <input type="checkbox" name="alignment">
+                                <input type="checkbox" value="alignment" name="checkbox">
                                 Molecular Alignment
                             </label>
                             <a href="help#molAlign" class="text-tips text-primary">
@@ -244,11 +305,29 @@
                             </a>
                         </p>
                     </li>
-                    
+                    <div id="collapseTwo" class="panel-collapse collapse alignmentType" role="tabpanel" aria-labelledby="headingTwo" style="margin-left:18px;">
+                        <ul class="list-group" style="margin-bottom: 0;">
+                            <li class="list-group-item">
+                                <span>Choose align method: </span>
+                                <label>
+                                    <input type="radio" name="iCheck4" value='shape' checked> 
+                                    3D Shape
+                                </label>
+                                <label>
+                                    <input type="radio" name="iCheck4" value='pharmacophore'>
+                                    Pharmacophore
+                                </label>
+                                <label>
+                                    <input type="radio" name="iCheck4" value='combine'>
+                                    Combine
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
                     <li>
                         <p class="text-black">
                             <label>
-                                <input type="checkbox" name="drugs">
+                                <input type="checkbox" value="drugs" name="checkbox">
                                 Drugs Mapping
                             </label>
                             <a href="help#molDrug" class="text-tips text-primary">
@@ -260,7 +339,7 @@
 					<li>
                         <p class="text-black">
                             <label>
-                                <input type="checkbox" name="target">
+                                <input type="checkbox" value="target" name="checkbox">
                                 Target & Pathway
                             </label>
                             <a href="help#molTarg" class="text-tips text-primary">
@@ -280,7 +359,6 @@
 
             <div class="btn-run">
                 <button class="btn btn-primary jsSubmit">Submit</button>
-       
             </div>
         </div>
         <!-- End analysis options -->
@@ -298,12 +376,13 @@
             <li role="presentation" class="separator"><a>|</a></li>
             <li role="presentation"><a href="help">Help</a></li>
         </ul>
-        <p style="text-align: center;padding: 0;margin: 0 auto;width: 350px;">
-            <span style="line-height:40px;float:left;color:darkgray">Copyright © 2020-2021 GIM  All rights reserved</span>
-            <a class="visitor-record" style="width: 40px; display:inline-block">  
-            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/5.js?i=5cyqgqeeo3e&amp;m=2&amp;c=ff0000&amp;cr1=ffffff" async="async"></script>
-        </a>
+        <p style="text-align: center;padding: 0;margin: 0 auto 10px;width: 350px; line-height:30px;line-height:30px;">
+            <span style="line-height:30px;float:left;color:darkgray">Copyright © 2020-2021 GIM  All rights reserved</span>
+            <a class="visitor-record" style="width: 30px; display:inline-block">  
+                <script type="text/javascript" src="//rf.revolvermaps.com/0/0/5.js?i=5cyqgqeeo3e&amp;m=2&amp;c=ff0000&amp;cr1=ffffff" async="async"></script>
+            </a>
         </p>
+        <div class="clearfix"></div>
     </footer>
 
     <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
