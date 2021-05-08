@@ -139,7 +139,7 @@ func PubchemMapping(ifile, ofile string) bool {
 	cmd := exec.Command("python", PubChemMapping, "--input-file", ifile, "--save-file", ofile)
 	_, err := cmd.Output()
 	if err != nil {
-		fmt.Println("Fail to call obabel")
+		fmt.Println("Fail to call PubChemMapping")
 		fmt.Println(err)
 		return false
 	}
@@ -148,7 +148,7 @@ func PubchemMapping(ifile, ofile string) bool {
 
 }
 
-func ReadPubchemMapResult(filename, jobid string) {
+func ReadPubchemMapResult1(filename, jobid string) {
 	//filename = "/home/liuzh/project/database/mappingChemDB/denovo500-3.csv"
 	fmt.Println("Start to read  pubchem mapping results")
 	ofile, err := os.Open(filename)
@@ -183,6 +183,55 @@ func ReadPubchemMapResult(filename, jobid string) {
 				if err != nil {
 					fmt.Println(err)
 					panic(err)
+				}
+			}
+		}
+	}
+	fmt.Println("Finished pubchem mapping results")
+}
+
+func ReadPubchemMapResult(jobid string) {
+
+	fmt.Println("Start to read  pubchem mapping results")
+	folder := beego.AppConfig.String("jobPath") + jobid
+	files, _ := ioutil.ReadDir(folder)
+	for _, file := range files {
+		fmt.Println(folder + "/" + file.Name())
+		if !strings.Contains(file.Name(), "pubchem_mapped") {
+			continue
+		}
+		ofile, err := os.Open(folder + "/" + file.Name())
+		if err != nil {
+			fmt.Println("Error:", err)
+		}
+		defer ofile.Close()
+
+		reader := csv.NewReader(ofile)
+		reader.Comma = ','
+		record, err := reader.Read()
+		for {
+			record, err = reader.Read()
+			if err == io.EOF {
+				break
+			} else if err != nil {
+				fmt.Println("Error:", err)
+				continue
+			}
+			inchikey := record[1]
+			cid := record[0]
+			var m models.Structure
+			var ms []models.Structure
+			_, err = m.Query().Filter("job_id", jobid).Filter("inchikey", inchikey).All(&ms)
+
+			if err == nil {
+				for i, _ := range ms {
+					var ma models.Structure
+					ma = ms[i]
+					ma.Cid = cid
+					err = ma.Update()
+					if err != nil {
+						fmt.Println(err)
+					}
 				}
 			}
 		}

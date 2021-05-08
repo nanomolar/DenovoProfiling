@@ -13,18 +13,34 @@ import (
 	"github.com/astaxie/beego"
 )
 
-func CalDistance(j *models.Job) {
-	fmt.Println("Distance matrix calculating ...")
-
+func CalFingerprints(j *models.Job) {
+	fmt.Println("Fingerprint calculating ...")
 	PaDELEXE := beego.AppConfig.String("PaDEL")
 	jobIDPath := beego.AppConfig.String("jobPath") + j.JobId
 	fpFile := jobIDPath + "/fp.csv"
-	fpXML := beego.AppConfig.String("FingerprintXML")
+	fpXML := ""
+	if j.FpType == "maccs" {
+		fpXML = beego.AppConfig.String("MACCSFingerprintXML")
+	} else if j.FpType == "pubchem" {
+		fpXML = beego.AppConfig.String("PUBCHEMFingerprintXML")
+	}
+
 	cmd := exec.Command("java", "-jar", PaDELEXE, "-dir", j.HitsSdfile, "-file", fpFile, "-fingerprints", "-2d", "-descriptortypes", fpXML, "-removesalt", "-retainorder")
 	_, err := cmd.Output()
 	if err != nil {
 		fmt.Println(err)
 		fmt.Println("Fail to call PaDEL")
+	}
+}
+
+func CalDistance(j *models.Job) {
+	fmt.Println("Distance matrix calculating ...")
+
+	jobIDPath := beego.AppConfig.String("jobPath") + j.JobId
+	fpFile := jobIDPath + "/fp.csv"
+	check, _ := PathExists(fpFile)
+	if !check {
+		CalFingerprints(j)
 	}
 
 	// generate a R script and run, generate the distance matrix file
@@ -38,15 +54,15 @@ func CalDistance(j *models.Job) {
 
 	RscriptPath := jobIDPath + "/distance_script.R"
 	fo, _ := os.Create(RscriptPath)
-	_, err = fo.WriteString(scriptContent)
+	_, err := fo.WriteString(scriptContent)
 
 	if err != nil {
 		fmt.Println(err)
-		panic(err)
+		//panic(err)
 	}
 	fo.Close()
 
-	cmd = exec.Command("Rscript", RscriptPath)
+	cmd := exec.Command("Rscript", RscriptPath)
 	_, err = cmd.Output()
 	if err != nil {
 		fmt.Println(err)
@@ -105,6 +121,9 @@ func ReadDescriptorsFile(despath string) []models.Prop {
 		p.RotBonds, _ = strconv.ParseFloat(record[10], 64)
 		p.Tpsa, _ = strconv.ParseFloat(record[11], 64)
 
+		p.MolWeight, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", p.MolWeight), 64)
+		p.Alogp, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", p.Alogp), 64)
+		p.Tpsa, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", p.Tpsa), 64)
 		ps = append(ps, p)
 	}
 	fmt.Println("Finished read descriptors file ...")
@@ -149,6 +168,10 @@ func GetDescriptor(despath string) (Descriptors, error) {
 		RotBonds, _ := strconv.ParseFloat(record[10], 64)
 		Tpsa, _ := strconv.ParseFloat(record[11], 64)
 
+		MolWeight, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", MolWeight), 64)
+		Alogp, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", Alogp), 64)
+		Tpsa, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", Tpsa), 64)
+
 		Des.MolWeight = append(Des.MolWeight, MolWeight)
 		Des.Hba = append(Des.Hba, Hba)
 		Des.Hbd = append(Des.Hbd, Hbd)
@@ -164,8 +187,12 @@ func GetDescriptor(despath string) (Descriptors, error) {
 func CalPCA(j *models.Job) {
 	fmt.Println("PCA Calculating ...")
 	jobIDPath := beego.AppConfig.String("jobPath") + j.JobId
-	fpFile := jobIDPath + "/fp.csv"
 
+	fpFile := jobIDPath + "/fp.csv"
+	check, _ := PathExists(fpFile)
+	if !check {
+		CalFingerprints(j)
+	}
 	// generate a R script and run, generate the distance matrix file
 
 	scriptContent := read(beego.AppConfig.String("calPCARScript"))
