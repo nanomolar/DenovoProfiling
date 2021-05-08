@@ -30,9 +30,3 @@ func (this *MainController) Result() {
 func (this *MainController) JobCheck() {
 	this.TplName = "job_check.html"
 }
-
-/*
-func (this *MainController) Marvin4js() {
-	this.Ctx.Output.Download("marvin4js-license.cxl")
-}
-*/

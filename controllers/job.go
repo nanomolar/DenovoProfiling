@@ -13,11 +13,17 @@ import (
 
 func (this *MainController) SubmitJob() {
 	fmt.Println("Submitting ...")
-
 	// create a job
 	var j models.Job
 	util.CreateJob(&j)
 	j.JobType = this.GetString("analysisMethod")
+	fmt.Println(j.JobType)
+	fmt.Println(this.GetString("chemicalSpaceType"))
+	fmt.Println(this.GetString("alignmentType"))
+	fmt.Println(this.GetString("fpType"))
+	j.FpType = this.GetString("fpType")
+	j.AlignType = this.GetString("alignmentType")
+	j.ChemspaceType = this.GetString("chemicalSpaceType")
 	jobPath := beego.AppConfig.String("jobPath") + j.JobId
 	err := os.MkdirAll(jobPath, os.ModePerm)
 	if err != nil {

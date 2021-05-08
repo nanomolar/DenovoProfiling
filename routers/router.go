@@ -23,4 +23,7 @@ func init() {
 	//download
 	beego.Router("/downloadLib", &controllers.MainController{}, "*:DownloadLib")
 	beego.Router("/downloadAlignedLib", &controllers.MainController{}, "*:DownloadAlignedLib")
+	beego.Router("/downloadADMET", &controllers.MainController{}, "*:DownloadADMET")
+	//network
+	beego.Router("/network/showEdge", &controllers.MainController{}, "*:ShowEdgeInfor")
 }
