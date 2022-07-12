@@ -7,10 +7,15 @@ With the advances of deep learning techniques, various architectures for molecul
 ## Web site
 http://denovoprofiling.xielab.net
 
-## Install 
-
-
-
+## Install
+1. Download and install golang following the official instructions(https://go.dev/doc/install).
+2. Clone the DenovoProfiling repository.
+git clone https://github.com/nanomolar/DenovoProfiling.git
+3. Build the source code
+go build main.go
+4. edit the configure file in conf/app.conf
+5. run server
+nohup ./main &
 
 
 
